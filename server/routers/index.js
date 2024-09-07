@@ -2,6 +2,10 @@ const express = require('express');
 const registerUser = require('../controllers/registerUser');
 const checkEmail = require('../controllers/checkEmail');
 const checkPawword = require('../controllers/checkPassword');
+const userDetails = require('../controllers/userDetails');
+const logout = require('../controllers/logout');
+const searchUser = require('../controllers/searchUser');
+const updateUserDetails = require('../controllers/updateUserDetails');
 
 const router = express.Router();
 
@@ -11,6 +15,16 @@ router.post("/register", registerUser);
 router.post("/email", checkEmail);
 // check user Password
 router.post("/password", checkPawword);
+//login user details 
+router.get("/user-details", userDetails);
+//logout user 
+router.get("/logout", logout);
+//update user details 
+router.post("/update-user", updateUserDetails);
+// search user 
+router.post("/search-user", searchUser);
+
+
 
 
 
