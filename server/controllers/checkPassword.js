@@ -25,15 +25,16 @@ async function checkPawword(req,res) {
     const token = await jwt.sign(tokenData, process.env.JWT_SECREAT_KEY, { expiresIn: '1d' });
 
     const cookieOptions = {
-      http: true,
-      secure:true
-    }
+      httpOnly: true,
+      secure: true, 
+      sameSite: "None", 
+    };
 
-    return res.cookie("token",token,cookieOptions).status(200).json({
+    return res.cookie("token", token, cookieOptions).status(200).json({
       message: "Login successfully",
       token: token,
-      success:true
-    })
+      success: true,
+    });
 
   } catch (error) {
     return res.status(500).json({
